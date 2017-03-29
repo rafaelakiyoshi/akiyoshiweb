@@ -2,8 +2,12 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.views import generic
+from django.core.urlresolvers import reverse_lazy
 
 from .models import Choice, Question
+class QuestionCreate(generic.CreateView):
+    model = Question
+    fields = ['question_text', 'question_desc']
 
 def IndexView(request):
     return render(request, 'index.html')

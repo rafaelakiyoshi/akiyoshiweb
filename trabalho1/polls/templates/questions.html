@@ -1,9 +1,55 @@
 {% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="/{{ question.id }}/">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
+<table>
+  <tr>
+    <th>Questão</th>
+    <th>Descrição</th>
+    <th>Data</th>
+    <th>Ações</th>
+  </tr>
+  {% for question in latest_question_list %}
+  {% if question.isAccept %}
+  <tr>
+    <td>{{ question.question_text }}</td>
+    <td>{{ question.question_desc }}</td>
+    <td>{{ question.pub_date }}</td>
+    <td><a href="/{{question.id}}">VOTAR</a></td>
+  </tr>
+  {% endif %}
+  {% endfor %}
+</table>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+<a href="/create">  <center><button class="button3">Criar minha Votação</button><center></a>
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.button3 {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 40px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  text-shadow: 2px 2px black;
+}
+</style>

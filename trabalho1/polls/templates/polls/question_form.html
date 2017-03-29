@@ -1,0 +1,13 @@
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input onclick="hello()" type="submit" value="Submit" />
+</form>
+
+<script>
+function hello() {
+    alert('Aguarde um Administrador aprovar sua pergunta!')
+}
+
+$(document).ready(function() {
+});
+</script>
